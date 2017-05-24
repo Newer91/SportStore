@@ -24,7 +24,7 @@ namespace SportsStore.Domain.Concrete
             else
             {
                 Product dbEntry = context.Products.Find(product.ProductID);
-                if(dbEntry !=null)
+                if (dbEntry != null)
                 {
                     dbEntry.Name = product.Name;
                     dbEntry.Description = product.Description;
@@ -33,6 +33,17 @@ namespace SportsStore.Domain.Concrete
                 }
             }
             context.SaveChanges();
+        }
+
+        public Product DeleteProduct(int productID)
+        {
+            Product dbEntry = context.Products.Find(productID);
+            if (dbEntry != null)
+            {
+                context.Products.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
         }
     }
 }
