@@ -237,5 +237,3 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 /MVA_CORE/
-/BandD.Serwis.SerwisISS/Migrations
-/SportsStore.Domain/Migrations
