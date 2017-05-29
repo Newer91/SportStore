@@ -92,6 +92,14 @@
     <Compile Include="Migrations\201705231814374_Change.Designer.cs">
       <DependentUpon>201705231814374_Change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705291743080_AddImage.cs" />
+    <Compile Include="Migrations\201705291743080_AddImage.Designer.cs">
+      <DependentUpon>201705291743080_AddImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705291749570_AddImage1.cs" />
+    <Compile Include="Migrations\201705291749570_AddImage1.Designer.cs">
+      <DependentUpon>201705291749570_AddImage1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705231814374_Change.resx">
       <DependentUpon>201705231814374_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291743080_AddImage.resx">
+      <DependentUpon>201705291743080_AddImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705291749570_AddImage1.resx">
+      <DependentUpon>201705291749570_AddImage1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
