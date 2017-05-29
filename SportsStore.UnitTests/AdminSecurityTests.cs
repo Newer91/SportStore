@@ -1,0 +1,46 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using SportsStore.WebUI.Infrastructure.Abstract;
+using SportsStore.WebUI.Models;
+using SportsStore.WebUI.Controllers;
+using System.Web.Mvc;
+
+namespace SportsStore.UnitTests
+{
+    [TestClass]
+    public class AdminSecurityTests
+    {
+        [TestMethod]
+        public void CanLoginWithValidCredentials()
+        {
+            Mock<IAuthProvider> mock = new Mock<IAuthProvider>();
+            mock.Setup(m => m.Authenticate("admin", "sekret")).Returns(true);
+
+            LoginViewModel model = new LoginViewModel { UserName = "admin", Password = "sekret" };
+
+            AccountController target = new AccountController(mock.Object);
+
+            ActionResult result = target.Login(model, "/MyURL");
+
+            Assert.IsInstanceOfType(result, typeof(RedirectResult));
+            Assert.AreEqual("/MyURL", ((RedirectResult)result).Url);
+        }
+
+        [TestMethod]
+        public void CannotLoginWithInvalidCredentials()
+        {
+            Mock<IAuthProvider> mock = new Mock<IAuthProvider>();
+            mock.Setup(m => m.Authenticate("nieprawidłowyUżytkownik", "nieprawidłoweHasło")).Returns(false);
+
+            LoginViewModel model = new LoginViewModel { UserName = "nieprawidłowyUżytkownik", Password = "nieprawidłoweHasło" };
+
+            AccountController target = new AccountController(mock.Object);
+
+            ActionResult result = target.Login(model, "/MyURL");
+
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
+        }
+    }
+}
