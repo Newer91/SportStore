@@ -14,6 +14,8 @@
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.ProductID)
+            @Html.HiddenFor(m => m.ImageData)
+            @Html.HiddenFor(m => m.ImageMimeType)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 switch (property.PropertyName)
